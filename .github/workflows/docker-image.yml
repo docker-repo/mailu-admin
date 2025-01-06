@@ -1,0 +1,17 @@
+name: Build and push docker image
+on:
+  push:
+    tags:
+      - '2024*'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag ghcr.io/docker-repo/mailu-admin:${{ github.ref_name }}
+    - name: Push the Docker image
+      run: |
+        docker login -u tschaefe -p ${{ secrets.DOCKER_GHCR_TOKEN }} ghcr.io
+        docker push ghcr.io/docker-repo/mailu-admin:${{ github.ref_name }}
