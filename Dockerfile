@@ -1,4 +1,4 @@
-FROM ghcr.io/mailu/admin:2024.06.37
+FROM ghcr.io/mailu/admin:2024.06.41
 LABEL org.opencontainers.image.source=https://github.com/docker-repo/mailu-admin
 LABEL org.opencontainers.image.description="Mailu Admin with custom patches"
 
